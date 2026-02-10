@@ -171,3 +171,23 @@ export const featuresData = {
     }
   ]
 }
+
+export const aboutData = {
+  en: {
+    subtitle: "Who We Are",
+    
+    title: "ABA Electricals",
+    titleHighlight: "Kuwait",
+    description: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.",
+    buttonText: "Explore More",
+    image: "/assets/images/about/about-thumb-02.webp"
+  },
+  ar: {
+    subtitle: "من نحن",
+    title: "ABA الكهربائية",
+    titleHighlight: "الكويت",
+    description: "من الحقائق الثابتة منذ فترة طويلة أن القارئ سيتشتت انتباهه بالمحتوى المقروء للصفحة عند النظر إلى تخطيطها. الهدف من استخدام لوريم إيبسوم هو أنه يحتوي على توزيع طبيعي أكثر أو أقل من الحروف، على عكس استخدام 'المحتوى هنا، المحتوى هنا'، مما يجعله يبدو كاللغة الإنجليزية المقروءة. تستخدم العديد من حزم النشر المكتبي ومحرري صفحات الويب الآن لوريم إيبسوم كنص نموذجي افتراضي.",
+    buttonText: "استكشف المزيد",
+    image: "/assets/images/about/about-thumb-02.webp"
+  }
+}
