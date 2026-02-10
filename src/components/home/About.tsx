@@ -1,15 +1,38 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function About() {
   const thumbRef = useRef<HTMLDivElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    if (thumbRef.current) {
-      thumbRef.current.classList.add('reveal-active')
+    // Trigger immediately if already in viewport
+    const checkVisibility = () => {
+      if (thumbRef.current) {
+        const rect = thumbRef.current.getBoundingClientRect()
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          setIsVisible(true)
+        }
+      }
     }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (thumbRef.current) {
+      observer.observe(thumbRef.current)
+      checkVisibility()
+    }
+
+    return () => observer.disconnect()
   }, [])
   return (
     <section className="rs-about-area section-space rs-about-two pt-0">
@@ -42,8 +65,18 @@ export default function About() {
                   </div>
                 </div>
               </div>
-              <div  className="rs-about-thumb rs-image scroll_reveal reveal_left" style={{ opacity: 1, visibility: 'visible' }}>
-                <Image decoding="async" src="/assets/images/about/about-thumb-02.webp" alt="image" width={600} height={600} />
+              <div 
+                ref={thumbRef}
+                className="rs-about-thumb rs-image" 
+                style={{ 
+                  display: 'block', 
+                  opacity: isVisible ? 1 : 0,
+                  visibility: 'visible',
+                  transform: isVisible ? 'translateX(0)' : 'translateX(-50px)',
+                  transition: 'opacity 0.8s ease, transform 0.8s ease'
+                }}
+              >
+                <Image decoding="async" src="/assets/images/about/about-thumb-02.webp" alt="image" width={600} height={600} style={{ display: 'block', maxWidth: '100%', height: 'auto' }} />
               </div>
             </div>
           </div>

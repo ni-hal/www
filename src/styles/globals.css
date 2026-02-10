@@ -64,3 +64,15 @@
     transform: translateY(0);
   }
 }
+
+/* Scroll Reveal Animation */
+.scroll_reveal.reveal_left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll_reveal.reveal_left.reveal-active {
+  opacity: 1;
+  transform: translateX(0);
+}
