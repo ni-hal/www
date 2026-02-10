@@ -76,7 +76,14 @@ export const products = [
     subtitle: 'Automatic Transfer Switch (ATS) Panels',
     arSubtitle: 'لوحات التحويل التلقائي',
     img: '/assets/images/product3.webp'
-  }
+  },
+   {
+    title: 'Generator & Transfer Panels',
+    arTitle: 'لوحات المولدات والتحويل',
+    subtitle: 'Automatic Transfer Switch (ATS) Panels',
+    arSubtitle: 'لوحات التحويل التلقائي',
+    img: '/assets/images/product3.webp'
+  },
 ];
 
 export const services = [

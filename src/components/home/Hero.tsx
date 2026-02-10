@@ -1,60 +1,122 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { heroSlides } from '@/lib/data'
 import { useLanguage } from '@/contexts/LanguageContext'
 
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Autoplay, EffectFade } from 'swiper/modules'
+
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/effect-fade'
+
 export default function Hero() {
   const { language } = useLanguage()
-  
+  const isRTL = language === 'ar'
+
   return (
-  
-    <section className="rs-banner-area rs-banner-six p-relative rs-swiper">
-      <div className="rs-banner-slider-wrapper">
-        <div className="swiper" data-clone-slides="false" data-loop="true" data-speed="2000" data-autoplay="true" data-dots-dynamic="false" data-hover-pause="true" data-effect="fade" data-delay="1000" data-item="1">
-          <div className="swiper-wrapper">
-            {heroSlides.map((slide, i) => (
-              <div key={`${language}-${i}`} className="swiper-slide">
-                <div className="rs-banner-item-wrapper">
-                  <div className="rs-banner-bg-thumb" style={{ backgroundImage: `url(${slide.image})` }}></div>
-                  <div className="container-fluid">
-                    <div className="row g-5">
-                      <div className="col-xl-7 col-lg-7">
-                        <div className="rs-banner-item">
-                          <div className="rs-banner-content">
-                            <span className="rs-banner-subtitle" style={{ fontFamily: language === 'ar' ? 'Cairo, sans-serif' : 'inherit', textTransform: language === 'ar' ? 'none' : undefined }}>
-                              <img src="/assets/images/shape/border-line.png" alt="image" />
-                              {language === 'ar' ? slide.arSubtitle : slide.subtitle}
-                            </span>
-                            <h1 className="rs-banner-title" style={{ fontFamily: language === 'ar' ? 'Cairo, sans-serif' : 'inherit', textTransform: language === 'ar' ? 'none' : undefined }}>{language === 'ar' ? slide.arTitle : slide.title}</h1>
-                            <div className="rs-banner-info">
-                              <div className="rs-about-btn">
-                                <Link className="rs-btn has-theme-light-blue has-icon has-bg" href="/products">
-                                  More Details
-                                  <span className="icon-box">
-                                    <svg className="icon-first" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                                      <path d="M31.71,15.29l-10-10L20.29,6.71,28.59,15H0v2H28.59l-8.29,8.29,1.41,1.41,10-10A1,1,0,0,0,31.71,15.29Z"></path>
-                                    </svg>
-                                  </span>
-                                </Link>
-                              </div>
+    <section
+      className="rs-banner-area rs-banner-six p-relative"
+      dir={isRTL ? 'rtl' : 'ltr'}
+    >
+      <div className="rs-banner-slider-wrapper overflow-hidden">
+        <Swiper
+          key={language} // important: reinitialize on language change
+          modules={[Navigation, Autoplay, EffectFade]}
+          dir={isRTL ? 'rtl' : 'ltr'}
+          slidesPerView={1}
+          loop={true}
+          speed={2000}
+          effect="fade"
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+          }}
+          navigation={{
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          }}
+        >
+          {heroSlides.map((slide, i) => (
+            <SwiperSlide key={i}>
+              <div className="rs-banner-item-wrapper relative">
+                
+                {/* Background Image */}
+                <div className="rs-banner-bg-thumb absolute inset-0 -z-10">
+                  <Image
+                    src={slide.image}
+                    alt={slide.title}
+                    fill
+                    className="object-cover"
+                    priority={i === 0}
+                  />
+                </div>
+
+                <div className="container-fluid">
+                  <div className="row g-5">
+                    <div className="col-xl-7 col-lg-7">
+                      <div className="rs-banner-item">
+                        <div className="rs-banner-content">
+
+                          {/* Subtitle */}
+                          <span
+                            className="rs-banner-subtitle"
+                            style={{
+                              fontFamily: isRTL ? 'Cairo, sans-serif' : 'inherit',
+                              textTransform: isRTL ? 'none' : undefined,
+                            }}
+                          >
+                            <img
+                              src="/assets/images/shape/border-line.png"
+                              alt=""
+                            />
+                            {isRTL ? slide.arSubtitle : slide.subtitle}
+                          </span>
+
+                          {/* Title */}
+                          <h1
+                            className="rs-banner-title"
+                            style={{
+                              fontFamily: isRTL ? 'Cairo, sans-serif' : 'inherit',
+                              textTransform: isRTL ? 'none' : undefined,
+                            }}
+                          >
+                            {isRTL ? slide.arTitle : slide.title}
+                          </h1>
+
+                          {/* Button */}
+                          <div className="rs-banner-info">
+                            <div className="rs-about-btn">
+                              <Link
+                                className="rs-btn has-theme-light-blue has-icon has-bg"
+                                href="/products"
+                              >
+                                {isRTL ? 'المزيد من التفاصيل' : 'More Details'}
+                                <span className="icon-box">
+                                  →
+                                </span>
+                              </Link>
                             </div>
                           </div>
+
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </SwiperSlide>
+          ))}
+
+          {/* Navigation */}
           <div className="rs-banner-navigation">
-            <button className="swiper-button-prev rs-swiper-btn has-theme-light-blue"><i className="fa-regular fa-arrow-left"></i></button>
-            <button className="swiper-button-next rs-swiper-btn has-theme-light-blue"><i className="fa-regular fa-arrow-right"></i></button>
+            <button className="swiper-button-prev rs-swiper-btn has-theme-light-blue" />
+            <button className="swiper-button-next rs-swiper-btn has-theme-light-blue" />
           </div>
-        </div>
+        </Swiper>
       </div>
     </section>
-  
   )
 }

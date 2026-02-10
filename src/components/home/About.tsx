@@ -42,9 +42,9 @@ export default function About() {
                   </div>
                 </div>
               </div>
-              {/* <div  className="rs-about-thumb rs-image scroll_reveal reveal_left" style={{ opacity: 1, visibility: 'visible' }}>
+              <div  className="rs-about-thumb rs-image scroll_reveal reveal_left" style={{ opacity: 1, visibility: 'visible' }}>
                 <Image decoding="async" src="/assets/images/about/about-thumb-02.webp" alt="image" width={600} height={600} />
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
