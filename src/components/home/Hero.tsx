@@ -14,19 +14,19 @@ export default function Hero() {
         <div className="swiper" data-clone-slides="false" data-loop="true" data-speed="2000" data-autoplay="true" data-dots-dynamic="false" data-hover-pause="true" data-effect="fade" data-delay="1000" data-item="1">
           <div className="swiper-wrapper">
             {heroSlides.map((slide, i) => (
-              <div key={i} className="swiper-slide">
+              <div key={`${language}-${i}`} className="swiper-slide">
                 <div className="rs-banner-item-wrapper">
-                  <div className="rs-banner-bg-thumb" data-background={slide.image}></div>
+                  <div className="rs-banner-bg-thumb" style={{ backgroundImage: `url(${slide.image})` }}></div>
                   <div className="container-fluid">
                     <div className="row g-5">
                       <div className="col-xl-7 col-lg-7">
                         <div className="rs-banner-item">
                           <div className="rs-banner-content">
-                            <span className="rs-banner-subtitle">
+                            <span className="rs-banner-subtitle" style={{ fontFamily: language === 'ar' ? 'Cairo, sans-serif' : 'inherit', textTransform: language === 'ar' ? 'none' : undefined }}>
                               <img src="/assets/images/shape/border-line.png" alt="image" />
                               {language === 'ar' ? slide.arSubtitle : slide.subtitle}
                             </span>
-                            <h1 className="rs-banner-title">{language === 'ar' ? slide.arTitle : slide.title}</h1>
+                            <h1 className="rs-banner-title" style={{ fontFamily: language === 'ar' ? 'Cairo, sans-serif' : 'inherit', textTransform: language === 'ar' ? 'none' : undefined }}>{language === 'ar' ? slide.arTitle : slide.title}</h1>
                             <div className="rs-banner-info">
                               <div className="rs-about-btn">
                                 <Link className="rs-btn has-theme-light-blue has-icon has-bg" href="/products">

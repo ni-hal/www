@@ -7503,12 +7503,12 @@ html.lenis body {
   position: relative;
   z-index: 2;
 }
-.rs-banner-one .rs-banner-title {
+/* .rs-banner-one .rs-banner-title {
   color: var(--rs-white);
-  font-size: 80px;
+  font-size: 800px;
   line-height: 1.15;
-  text-transform: capitalize;
-}
+  /* text-transform: capitalize; */
+
 @media only screen and (max-width: 1600px) {
   .rs-banner-one .rs-banner-title {
     font-size: 70px;
@@ -7914,9 +7914,9 @@ html.lenis body {
 }
 .rs-banner-four .rs-banner-title {
   color: var(--rs-white);
-  font-size: 80px;
+  font-size: 8px;
   line-height: 1.15;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 @media only screen and (max-width: 1199px) {
   .rs-banner-four .rs-banner-title {

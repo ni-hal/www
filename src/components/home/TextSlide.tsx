@@ -15,6 +15,10 @@ export default function TextSlide() {
     const inner = marquee.querySelector('.rs-text-slide-inner') as HTMLElement
     if (!inner) return
 
+    // Remove existing clones
+    const clones = marquee.querySelectorAll('.rs-text-slide-inner:not(:first-child)')
+    clones.forEach(clone => clone.remove())
+
     // Clone content for seamless loop
     const clone = inner.cloneNode(true) as HTMLElement
     marquee.appendChild(clone)
@@ -36,7 +40,7 @@ export default function TextSlide() {
 
     const animationId = requestAnimationFrame(animate)
     return () => cancelAnimationFrame(animationId)
-  }, [])
+  }, [language])
 
   return (
     <div className="rs-text-slide-area rs-text-slide-two pt-0">
@@ -48,7 +52,7 @@ export default function TextSlide() {
                 <div className="rs-text-slide-inner" style={{ display: 'flex' }}>
                   {textSlides.map((slide, i) => (
                     <div key={i} className="rs-text-slide-item">
-                      <h2 className="rs-text-slide-title">{i > 0 ? '& ' : ''}{language === 'ar' ? slide.arText : slide.text}</h2>
+                      <h2 className="rs-text-slide-title">{language === 'ar' ? slide.arText : slide.text}</h2>
                     </div>
                   ))}
                 </div>
