@@ -16,8 +16,21 @@ export default function Services() {
         swiperEl.swiper.destroy(true, true)
       }
       setTimeout(() => {
-        if ((window as any).initSwiper) {
-          (window as any).initSwiper()
+        const Swiper = (window as any).Swiper
+        if (Swiper) {
+          new Swiper('.rs-services-slide-wrapper .swiper', {
+            loop: true,
+            autoplay: true,
+            slidesPerView: 2,
+            spaceBetween: 30,
+            speed: 1500,
+            rtl: language === 'ar',
+            breakpoints: {
+              10: { slidesPerView: 1 },
+              768: { slidesPerView: 1 },
+              992: { slidesPerView: 2 }
+            }
+          })
         }
       }, 100)
     }
@@ -44,7 +57,7 @@ export default function Services() {
             </div>
           </div>
           <div className="col-xl-9 col-lg-9">
-            <div className="rs-services-slide-wrapper" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+            <div className="rs-services-slide-wrapper">
               <div className="swiper" data-loop="true" data-speed="1500" data-autoplay="true" data-item="2" key={language}>
                 <div className="swiper-wrapper">
                   {services.map((service, i) => (
