@@ -5,12 +5,13 @@ import Services from '@/components/home/Services'
 import TextSlide from '@/components/home/TextSlide'
 import Clients from '@/components/home/Clients'
 import Products from '@/components/home/Products'
-import Headers from '@/components/layout/Header'
+import Feature from '@/components/home/Feature'
 export default function Home() {
   return (
     <>
  
       <Hero />
+      <Feature/>
       <About />
       <TextSlide />
       <Services />
