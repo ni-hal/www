@@ -7562,8 +7562,8 @@ html.lenis body {
 .rs-banner-one .rs-banner-navigation {
   display: flex;
   gap: 10px;
-  flex-direction: column;
-  position: absolute;
+  /* flex-direction: column; */
+  /* position: absolute; */
   z-index: 2;
   inset-inline-end: 250px;
   top: 50%;

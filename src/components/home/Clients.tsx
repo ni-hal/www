@@ -20,13 +20,13 @@ export default function Clients() {
     >
       <div className="container">
         {/* Section Title */}
-        <div className="row justify-center mb-10">
+        <div className="row justify-center mb-10" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <div className="col-xl-7 col-lg-7">
             <div className="rs-section-title-wrapper text-center">
-              <span className="rs-section-subtitle has-theme-red">
+              <span className="rs-section-subtitle has-theme-red" >
                 {isRTL ? 'الشركاء' : 'Partners'}
               </span>
-              <h2 className="rs-section-title">
+              <h2 className="rs-section-title" >
                 {isRTL ? 'عملاؤنا' : 'Our Clients'}
               </h2>
             </div>

@@ -97,3 +97,120 @@
 .swiper-button-next.rs-swiper-btn.has-theme-light-blue {
   display: flex !important;
 }
+
+/* Custom Hero Navigation Buttons */
+.custom-nav-btn::after {
+  display: none;
+}
+
+.custom-nav-btn {
+  width: 60px;
+  height: 60px;
+  background-color: #ef1b1b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.swiper-button-prev.custom-nav-btn::before {
+  content: "←";
+  color: #fff;
+  font-size: 22px;
+}
+
+.swiper-button-next.custom-nav-btn::before {
+  content: "→";
+  color: #fff;
+  font-size: 22px;
+}
+
+[dir="rtl"] .swiper-button-prev.custom-nav-btn::before {
+  content: "→";
+}
+
+[dir="rtl"] .swiper-button-next.custom-nav-btn::before {
+  content: "←";
+}
+
+/* Hero Navigation Container */
+.rs-swiper-btn.has-theme-light-blue {
+  width: 70px !important;
+  height: 70px !important;
+  background-color: #ef1b1b !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  border: none !important;
+  position: static !important;
+  margin: 0 !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+}
+
+/* Remove default arrow */
+.rs-swiper-btn.has-theme-light-blue::after {
+  display: none;
+}
+
+/* Custom arrows */
+.swiper-button-prev.rs-swiper-btn.has-theme-light-blue::before {
+  content: "←";
+  color: #fff;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.swiper-button-next.rs-swiper-btn.has-theme-light-blue::before {
+  content: "→";
+  color: #fff;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.swiper-button-prev {
+  order: 1;
+}
+
+.swiper-button-next {
+  order: 2;
+}
+
+/* Navigation Container */
+.rs-banner-navigation {
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+[dir="rtl"] .rs-banner-navigation {
+  right: auto;
+  left: 50px;
+}
+
+[dir="rtl"] .swiper-button-prev.rs-swiper-btn.has-theme-light-blue::before {
+  content: "→";
+}
+
+[dir="rtl"] .swiper-button-next.rs-swiper-btn.has-theme-light-blue::before {
+  content: "←";
+}
+
+/* Product Cards */
+.rs-portfolio-item {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.rs-portfolio-item .rs-portfolio-thumb img {
+  border-radius: 12px 12px 0 0;
+}
