@@ -1,12 +1,17 @@
+'use client'
+
 import Link from 'next/link'
 import { contactInfo } from '@/lib/data/navigation'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Footer() {
+  const { language } = useLanguage()
   const contact = contactInfo || {
     phone: '+965 1234 5678',
     phone2: '+965 8765 4321',
     email: 'info@abaelectricals.com',
     address: 'Kuwait City, Kuwait',
+    addressAr: 'مدينة الكويت، الكويت',
   }
 
   return (
@@ -28,17 +33,17 @@ export default function Footer() {
               
               <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-6">
                 <div className="rs-footer-widget footer-2-col-2">
-                  <h5 className="rs-footer-widget-title">Useful Links</h5>
+                  <h5 className="rs-footer-widget-title">{language === 'ar' ? 'روابط مفيدة' : 'Useful Links'}</h5>
                   <div className="rs-footer-widget-content">
                     <div className="rs-footer-widget-links has-theme-light-blue">
                       <ul>
-                        <li><Link href="/">Home</Link></li>
-                        <li><Link href="/about">About Us</Link></li>
-                        <li><Link href="/services">Services</Link></li>
-                        <li><Link href="/products">Products</Link></li>
-                        <li><Link href="/subsidiaries">Subsidiaries</Link></li>
-                        <li><Link href="/clients">Our clients</Link></li>
-                        <li><Link href="/contact">Contact Us</Link></li>
+                        <li><Link href="/">{language === 'ar' ? 'الرئيسية' : 'Home'}</Link></li>
+                        <li><Link href="/about">{language === 'ar' ? 'من نحن' : 'About Us'}</Link></li>
+                        <li><Link href="/services">{language === 'ar' ? 'الخدمات' : 'Services'}</Link></li>
+                        <li><Link href="/products">{language === 'ar' ? 'المنتجات' : 'Products'}</Link></li>
+                        <li><Link href="/subsidiaries">{language === 'ar' ? 'الشركات التابعة' : 'Subsidiaries'}</Link></li>
+                        <li><Link href="/clients">{language === 'ar' ? 'عملاؤنا' : 'Our clients'}</Link></li>
+                        <li><Link href="/contact">{language === 'ar' ? 'اتصل بنا' : 'Contact Us'}</Link></li>
                       </ul>
                     </div>
                   </div>
@@ -47,14 +52,14 @@ export default function Footer() {
               
               <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-6">
                 <div className="rs-footer-widget footer-2-col-3">
-                  <h5 className="rs-footer-widget-title">Office Address</h5>
+                  <h5 className="rs-footer-widget-title">{language === 'ar' ? 'عنوان المكتب' : 'Office Address'}</h5>
                   <div className="rs-footer-widget-content">
                     <div className="rs-footer-widget-meta">
                       <div className="rs-footer-widget-address">
-                        <a target="_blank" href="#">{contact.address}</a>
+                        <a target="_blank" href="#">{language === 'ar' ? contact.addressAr : contact.address}</a>
                       </div>
-                      <h5 className="rs-footer-widget-title">Email Address</h5>
-                      <p>Interested in working with us?</p>
+                      <h5 className="rs-footer-widget-title">{language === 'ar' ? 'البريد الإلكتروني' : 'Email Address'}</h5>
+                      <p>{language === 'ar' ? 'مهتم بالعمل معنا؟' : 'Interested in working with us?'}</p>
                       <div className="rs-footer-widget-email">
                         <a href={`mailto:${contact.email}`}>{contact.email}</a>
                       </div>
@@ -65,7 +70,7 @@ export default function Footer() {
               
               <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-6">
                 <div className="rs-footer-widget footer-2-col-4">
-                  <h5 className="rs-footer-widget-title">Phone Number</h5>
+                  <h5 className="rs-footer-widget-title">{language === 'ar' ? 'رقم الهاتف' : 'Phone Number'}</h5>
                   <div className="rs-footer-widget-content">
                     <div className="rs-footer-widget-contact-info">
                       <div className="rs-footer-widget-number">
@@ -73,7 +78,7 @@ export default function Footer() {
                         <span><a href={`tel:${contact.phone2}`}>{contact.phone2}</a></span>
                       </div>
                     </div>
-                    <h5 className="rs-footer-widget-title">Follow Us</h5>
+                    <h5 className="rs-footer-widget-title">{language === 'ar' ? 'تابعنا' : 'Follow Us'}</h5>
                     <div className="rs-footer-widget-social">
                       <div className="rs-theme-social has-theme-light-blue">
                         <a href="#"><i className="ri-twitter-x-line"></i></a>
@@ -95,7 +100,7 @@ export default function Footer() {
           <div className="row justify-content-center">
             <div className="col-xl-12">
               <div className="rs-footer-copyright has-theme-blue text-center">
-                <p className="underline">© <span id="year">{new Date().getFullYear()}</span> ABA Electricals Kuwait. Designed by <a href="#">Uniweb IT Solutions</a></p>
+                <p className="underline">© <span id="year">{new Date().getFullYear()}</span> {language === 'ar' ? 'ABA الكهربائية الكويت. صمم بواسطة' : 'ABA Electricals Kuwait. Designed by'} <a href="#">Uniweb IT Solutions</a></p>
               </div>
             </div>
           </div>

@@ -23,7 +23,7 @@ export default function Hero() {
     >
       <div className="rs-banner-slider-wrapper overflow-hidden">
         <Swiper
-          key={language} // important: reinitialize on language change
+          key={language}
           modules={[Navigation, Autoplay, EffectFade]}
           dir={isRTL ? 'rtl' : 'ltr'}
           slidesPerView={1}

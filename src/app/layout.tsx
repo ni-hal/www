@@ -34,11 +34,9 @@ export default function RootLayout({
         <link rel="stylesheet" href="/assets/css/main.css" />
       </head>
       <body className="rs-smoother-yes">
-        <Preloader />
         <LanguageProvider>
+          <Preloader />
           <Header />
-
-
           <main>{children}</main>
           <Footer />
         </LanguageProvider>

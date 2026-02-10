@@ -3,12 +3,13 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { navigation } from '@/lib/data/navigation'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [isSticky, setIsSticky] = useState(false)
   const [showLangMenu, setShowLangMenu] = useState(false)
-  const { language, setLanguage } = useLanguage()
+  const { language, toggleLanguage } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,33 +37,24 @@ export default function Header() {
           <div className="rs-header-menu">
             <nav id="mobile-menu" className="main-menu p-0">
               <ul className="multipage-menu">
-                <li className="menu-item-has-children">
-                  <a href="#">About Us</a>
-                  <ul className="submenu last-children">
-                    <li><Link href="/about">Who We Are</Link></li>
-                    <li><Link href="/vision-mission-values">Vision Mission Values</Link></li>
-                    <li><Link href="/blog">Blogs</Link></li>
-                    <li><Link href="/quality-policy">Quality Policy</Link></li>
-                  </ul>
-                </li>
-                
-                <li className="menu-item-has-children">
-                  <a href="#">Products</a>
-                  <ul className="submenu last-children">
-                    <li><Link href="/products">Power Distribution Panels</Link></li>
-                    <li><Link href="/products">Control & Automation Panels</Link></li>
-                    <li><Link href="/products">Generator & Transfer Panels</Link></li>
-                    <li><Link href="/products">Special Panels</Link></li>
-                  </ul>
-                </li>
-                
-                <li className="menu-item-has-children">
-                  <Link href="/services">Services</Link>
-                </li>
-                
-                <li><Link href="/subsidiaries">Subsidiaries</Link></li>
-                <li><Link href="/clients">Our Clients</Link></li>
-                <li><Link href="/contact">Contact Us</Link></li>
+                {navigation.menu.map((item, index) => (
+                  <li key={index} className={item.submenu ? 'menu-item-has-children' : ''}>
+                    {item.href ? (
+                      <Link href={item.href}>{language === 'ar' ? item.titleAr : item.title}</Link>
+                    ) : (
+                      <a href="#">{language === 'ar' ? item.titleAr : item.title}</a>
+                    )}
+                    {item.submenu && (
+                      <ul className="submenu last-children">
+                        {item.submenu.map((sub, subIndex) => (
+                          <li key={subIndex}>
+                            <Link href={sub.href}>{language === 'ar' ? sub.titleAr : sub.title}</Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
               </ul>
             </nav>
           </div>
@@ -74,8 +66,7 @@ export default function Header() {
               </div>
               {showLangMenu && (
                 <div style={{ position: 'absolute', top: '100%', right: 0, background: '#fff', boxShadow: '0 2px 10px rgba(0,0,0,0.1)', borderRadius: '4px', marginTop: '10px', minWidth: '120px', zIndex: 1000 }}>
-                  <button onClick={() => { setLanguage('en'); setShowLangMenu(false); }} style={{ display: 'block', width: '100%', padding: '10px 20px', border: 'none', background: language === 'en' ? '#e5221e' : 'transparent', color: language === 'en' ? '#fff' : '#000', textAlign: 'left', cursor: 'pointer' }}>English</button>
-                  <button onClick={() => { setLanguage('ar'); setShowLangMenu(false); }} style={{ display: 'block', width: '100%', padding: '10px 20px', border: 'none', background: language === 'ar' ? '#e5221e' : 'transparent', color: language === 'ar' ? '#fff' : '#000', textAlign: 'left', cursor: 'pointer' }}>العربية</button>
+                  <button onClick={() => { toggleLanguage(); setShowLangMenu(false); }} style={{ display: 'block', width: '100%', padding: '10px 20px', border: 'none', background: 'transparent', color: '#000', textAlign: 'left', cursor: 'pointer' }}>{language === 'en' ? 'العربية' : 'English'}</button>
                 </div>
               )}
             </div>

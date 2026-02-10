@@ -76,3 +76,24 @@
   opacity: 1;
   transform: translateX(0);
 }
+
+/* Hide default Swiper navigation buttons */
+.swiper-button-prev:not(.rs-swiper-btn),
+.swiper-button-next:not(.rs-swiper-btn) {
+  display: none !important;
+}
+
+/* Hide navigation with has-bg-white or hover-red classes */
+.swiper-button-prev.has-bg-white,
+.swiper-button-next.has-bg-white,
+.swiper-button-prev.hover-red,
+.swiper-button-next.hover-red,
+.swiper-button-lock {
+  display: none !important;
+}
+
+/* Only show navigation with has-theme-light-blue */
+.swiper-button-prev.rs-swiper-btn.has-theme-light-blue,
+.swiper-button-next.rs-swiper-btn.has-theme-light-blue {
+  display: flex !important;
+}
