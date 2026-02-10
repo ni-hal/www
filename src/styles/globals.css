@@ -1,0 +1,66 @@
+[dir="rtl"] {
+  direction: rtl;
+}
+
+[dir="ltr"] {
+  direction: ltr;
+}
+
+/* Custom Header Hover Fix */
+.rs-header-inner {
+  transition: all 0.3s ease;
+}
+
+.rs-header-inner:hover {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure menu items are hoverable */
+.main-menu ul li a {
+  transition: color 0.3s ease;
+}
+
+.main-menu ul li a:hover {
+  color: var(--rs-theme-light-blue, #e5221e) !important;
+}
+
+/* Submenu hover fix */
+.main-menu ul li .submenu {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.main-menu ul li:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Logo height control */
+.rs-header-logo img {
+  max-height: 60px;
+  width: auto;
+}
+
+/* Sticky Header */
+.rs-sticky-header {
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.rs-sticky-header.active {
+  animation: slideDown 0.3s ease;
+}
+
+.rs-sticky-header.active .rs-header-logo img {
+  max-height: 50px;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
